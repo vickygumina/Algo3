@@ -1,3 +1,10 @@
+/*Nota: realice el siguiente ejercicio usando el algoritmo de sorting debido a que cuando intente hacerlo 
+* con backtracking recibía reiterados errores en vjudge de TLE, realmente no pude solucionarlos y 
+* por tal motivo recurrí a esta otra técnica.
+ */
+
+
+
 import java.util.*;
 
 class jugador {
@@ -33,15 +40,15 @@ class Main {
 
             mjAtacantes = new ArrayList<>();
             mjDefensores = new ArrayList<>();
-            
+
             equipo.sort((jugador1, jugador2) -> {
                 // Comparamos por orden lexicográfico del nombre
                 return jugador1.nombre.compareTo(jugador2.nombre);
             });
 
             equipo.sort((jugador1, jugador2) -> {
-                // Comparamos por puntaje de defensa en orden descendente
-                return Integer.compare(jugador2.ptoDefensa, jugador1.ptoDefensa);
+                // Comparamos por puntaje de defensa en orden ascendente
+                return Integer.compare(jugador1.ptoDefensa, jugador2.ptoDefensa);
             });
 
             equipo.sort((jugador1, jugador2) -> {
@@ -54,24 +61,22 @@ class Main {
                     return Integer.compare(jugador1.ptoDefensa, jugador2.ptoDefensa);
                 }
             });
-                
+
             mjAtacantes.addAll(equipo.subList(0, 5));
             mjDefensores.addAll(equipo.subList(5, 10));
 
-            List <String> nombreAtacante = new ArrayList<>();
+            List<String> nombreAtacante = new ArrayList<>();
 
-            for(jugador jugador : mjAtacantes){
+            for (jugador jugador : mjAtacantes) {
                 nombreAtacante.add(jugador.nombre);
-
             }
 
             Collections.sort(nombreAtacante);
 
-            List <String> nombreDefensores = new ArrayList<>();
+            List<String> nombreDefensores = new ArrayList<>();
 
-            for(jugador jugador : mjDefensores){
+            for (jugador jugador : mjDefensores) {
                 nombreDefensores.add(jugador.nombre);
-
             }
 
             Collections.sort(nombreDefensores);
@@ -99,5 +104,4 @@ class Main {
         }
         scanner.close();
     }
-
 }
